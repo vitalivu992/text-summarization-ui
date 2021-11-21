@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import {
@@ -14,12 +15,13 @@ export function summarize(args = {}) {
     });
 
     const promise = new Promise((resolve, reject) => {
-      const doRequest = args.error ? Promise.reject(new Error()) : Promise.resolve();
+
+      const doRequest = axios.post(process.env.REACT_APP_API_ENDPOINT + '/api/v1/summary');
       doRequest.then(
         (res) => {
           dispatch({
             type: SUMMARIZE_SUMMARIZE_SUCCESS,
-            data: res,
+            data: res.data.data,
           });
           resolve(res);
         },
@@ -91,6 +93,7 @@ export function reducer(state, action) {
         ...state,
         summarizePending: false,
         summarizeError: null,
+        computeSummary: action.data.compute_summary
       };
 
     case SUMMARIZE_SUMMARIZE_FAILURE:

@@ -16,6 +16,12 @@ const initialState = {
   loadExampleError: null,
   rateSummaryTextPending: false,
   rateSummaryTextError: null,
+  article: null,
+  goldSummary: null,
+  computeSummary: null,
+  rouge1Score: 0,
+  rouge2Score: 0,
+  rougeLScore: 0
 };
 
 export default initialState;

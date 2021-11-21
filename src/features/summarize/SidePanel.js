@@ -16,10 +16,10 @@ export default function SidePanel() {
           <a href="/summarize?random"><Icon name='cube'/>Explore</a>
         </li>
         <li>
-          <a href="$" target="blank"><Icon name='file'/> The paper - Pegasus</a>
+          <a href="https://arxiv.org/abs/1912.08777" target="blank"><Icon name='file'/> The paper - Pegasus</a>
         </li>
         <li>
-          <a href="#" target="blank"><Icon name='database'/> CNN Dailymail</a>
+          <a href="https://paperswithcode.com/dataset/cnn-daily-mail-1" target="blank"><Icon name='database'/> CNN Dailymail dataset</a>
         </li>
         <li>
           <a href="#" target="blank"><Icon name='book'/> The notebook</a>
