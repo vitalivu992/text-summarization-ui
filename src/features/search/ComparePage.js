@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from './redux/actions';
 import { Header, Button, List, Label, Icon, Form } from 'semantic-ui-react';
-import { SCORE_CODE_TO_LABEL, PRECISION } from '../home/App';
+import { SCORE_CODE_TO_LABEL, PRECISION } from '../landing/App';
 
 export class ComparePage extends Component {
   static propTypes = {
