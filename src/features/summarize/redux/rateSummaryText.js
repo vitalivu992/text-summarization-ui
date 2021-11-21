@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import {
@@ -7,19 +8,23 @@ import {
   SUMMARIZE_RATE_SUMMARY_TEXT_DISMISS_ERROR,
 } from './constants';
 
-export function rateSummaryText(args = {}) {
+export function rateSummaryText(goldSummary, computeSummary, args = {}) {
   return (dispatch) => { // optionally you can have getState as the second argument
     dispatch({
       type: SUMMARIZE_RATE_SUMMARY_TEXT_BEGIN,
     });
 
     const promise = new Promise((resolve, reject) => {
-      const doRequest = args.error ? Promise.reject(new Error()) : Promise.resolve();
+      const doRequest = axios.post(process.env.REACT_APP_API_ENDPOINT + '/api/v1/rate',
+        {
+          'gold_summary': goldSummary,
+          'compute_summary': computeSummary
+        });
       doRequest.then(
         (res) => {
           dispatch({
             type: SUMMARIZE_RATE_SUMMARY_TEXT_SUCCESS,
-            data: res,
+            data: res.data.data,
           });
           resolve(res);
         },
@@ -87,6 +92,9 @@ export function reducer(state, action) {
         ...state,
         rateSummaryTextPending: false,
         rateSummaryTextError: null,
+        rouge1Score: action.data.rouge_1,
+        rouge2Score: action.data.rouge_2,
+        rougeLScore: action.data.rouge_l,
       };
 
     case SUMMARIZE_RATE_SUMMARY_TEXT_FAILURE:

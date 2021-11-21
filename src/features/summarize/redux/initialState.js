@@ -8,9 +8,6 @@
 const initialState = {
   summarizePending: false,
   summarizeError: null,
-  summarizeScoreR1: 0,
-  summarizeScoreR2: 0,
-  summarizeScoreRL: 0,
   summarizeTime: 0,
   loadExamplePending: false,
   loadExampleError: null,
