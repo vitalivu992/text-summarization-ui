@@ -8,15 +8,17 @@ import {
   SUMMARIZE_SUMMARIZE_DISMISS_ERROR,
 } from './constants';
 
-export function summarize(args = {}) {
+export function summarize(article, args = {}) {
   return (dispatch) => { // optionally you can have getState as the second argument
     dispatch({
       type: SUMMARIZE_SUMMARIZE_BEGIN,
     });
 
     const promise = new Promise((resolve, reject) => {
-
-      const doRequest = axios.post(process.env.REACT_APP_API_ENDPOINT + '/api/v1/summary');
+      const doRequest = axios.post(process.env.REACT_APP_API_ENDPOINT + '/api/v1/summary',
+        {
+          'article': article
+        });
       doRequest.then(
         (res) => {
           dispatch({
@@ -93,7 +95,8 @@ export function reducer(state, action) {
         ...state,
         summarizePending: false,
         summarizeError: null,
-        computeSummary: action.data.compute_summary
+        computeSummary: action.data.compute_summary,
+        summarizeTime: action.data.time,
       };
 
     case SUMMARIZE_SUMMARIZE_FAILURE:
