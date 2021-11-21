@@ -1,21 +1,21 @@
 @import '../../styles/mixins';
 
-.home-welcome-page {
+.landing-welcome-page {
   text-align: center;
   .app {
     text-align: center;
   }
 
   .rekit-logo {
-    animation: app-logo-spin infinite 1s linear;
+    animation: app-logo-spin infinite 0.66s linear;
     height: 80px;
   }
 
   .app-header {
-    background-color: #00b5ad;
+    background-color: #ffed84;
     height: 250px;
     padding: 20px;
-    color: white;
+    color: black;
     overflow: hidden;
     position: relative;
   }
