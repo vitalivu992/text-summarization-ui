@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from './redux/actions';
 
-import { Header, Button, Divider, Label, Icon, Form, Grid, Message } from 'semantic-ui-react';
+import { Header, Button, Divider, Label, Icon, Form, Grid } from 'semantic-ui-react';
 
 export class ToolPage extends Component {
   static propTypes = {
@@ -15,13 +15,16 @@ export class ToolPage extends Component {
   render() {
     const { summarizePending, summarizeError, summarizeTime,
       loadExamplePending, loadExampleError,
-      rateSummaryTextPending, rateSummaryTextError,
+      rateSummaryTextPending,
       rouge1Score, rouge2Score, rougeLScore,
       article, goldSummary, computeSummary } = this.props.summarize;
 
     const { summarize, loadExample, rateSummaryText } = this.props.actions;
 
-    const handleChange = event => { this.props.summarize[event.target.name] = event.target.value; };
+    const handleChange = event => {
+      this.props.summarize[event.target.name] = event.target.value;
+      console.log("Length of",event.target.name, this.props.summarize[event.target.name].length);
+     };
 
     const loadSummary = () => {
       summarize(article);
@@ -44,6 +47,7 @@ export class ToolPage extends Component {
               <Form.TextArea label='Input article' placeholder={article != null ? article : 'Your article'} size='large'
                 name='article' onChange={handleChange} className='large-text-area-x2' error={loadExampleError && loadExampleError.message ? { content: loadExampleError.message } : null} />
             </Grid.Column>
+
             <Grid.Column>
               <Form.TextArea label='Gold summary' placeholder={goldSummary != null ? goldSummary : 'This is the gold summary'}
                 name='goldSummary' onChange={handleChange} className='large-text-area' error={loadExampleError && loadExampleError.message ? { content: loadExampleError.message } : null} />

@@ -3,7 +3,6 @@ import { PageNotFound } from '../features/common';
 import landingRoute from '../features/landing/route';
 import commonRoute from '../features/common/route';
 import _ from 'lodash';
-import searchRoute from '../features/search/route';
 import summarizeRoute from '../features/summarize/route';
 
 // NOTE: DO NOT CHANGE the 'childRoutes' name and the declaration pattern.
@@ -11,7 +10,6 @@ import summarizeRoute from '../features/summarize/route';
 const childRoutes = [
   landingRoute,
   commonRoute,
-  searchRoute,
   summarizeRoute,
 ];
 

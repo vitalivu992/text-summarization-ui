@@ -4,7 +4,7 @@ import { Icon } from 'semantic-ui-react';
 
 export default function SidePanel() {
   return (
-    <div className="search-side-panel">
+    <div className="summarize-side-panel">
       <ul>
         <li>
           <Link to="/"><Icon name='home'/>Home</Link>
