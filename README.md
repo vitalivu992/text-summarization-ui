@@ -1,55 +1,28 @@
-## Deployment status
-[![Netlify Status](https://api.netlify.com/api/v1/badges/3acaa2cf-42ed-4a1b-acf1-ff8f40c2dd86/deploy-status)](https://app.netlify.com/sites/semantic-similarity-search/deploys)
+Text summarization UI
+===
 
-## Getting started
+## Development
 
-### 1. Install `rekit-studio`
-```
-npm install -g rekit rekit-studio
-```
+### Setup environment
 
-### 2. Start studio
-```
-rekit-studio -p 3333
-```
-then open http://localhost:3333 in your favorite browser.
+Use node v10.x
 
-### 3. Preview your work
-Open in another console window:
-```
-# yarn install
-yarn start
-```
+1. Install rekit-studio: `npm install -g rekit-studio`
+2. Start rekit: `rekit-studio -p 3333`
+3. Open browser: http://localhost:3333
 
-## Deployment
+### Start project
 
-Make sure that every path successfully resolves to index.html and the client has full control over the routing logic
+Use node v14.x
 
-### nginx
+1. `yarn install`
+2. `yarn start`
+3. Open browser: http://localhost:3100
 
-create a conf file:
-```
-server {
+### Build the docker image
 
-        root build;
-        index index.html;
+See `.bash_aliases`
 
-        server_name ssearch.net;
+## Production
 
-        location / {
-	  if (!-e $request_filename){
-	    rewrite ^(.*)$ /index.html break;
-	  }
-        }
-        listen 80;
-        listen [::]:80;
-}
-```
-
-### netlify
-
-create a file `_redirects` with content:
-```
-/*   /index.html   200
-```
-for more details, see netlify's [tutorial](https://www.netlify.com/blog/2020/04/07/creating-better-more-predictable-redirect-rules-for-spas/)
+TBD
