@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function PageNotFound() {
-  return <div className="common-page-not-found">Page not found.</div>;
+  return <h2 className="common-page-not-found">Page not found.</h2>;
 }
