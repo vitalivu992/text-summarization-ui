@@ -19,6 +19,7 @@ jobs:
         with:
           node-version: 14.x
           cache: yarn
+          cache-dependency-path: ./yarn.lock
     
       - name: Cache Docker layers
         uses: actions/cache@v2
